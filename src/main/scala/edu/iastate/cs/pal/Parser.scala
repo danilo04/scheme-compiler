@@ -32,5 +32,5 @@ class Parser extends JavaTokenParsers {
 
   def expr: Parser[AST.Expr] = varr | number | quote | define | iftest | proc
 
-  def parse(source: String) = parseAll(expr, source).get
+  def parse(source: String): AST.Expr = parseAll(expr, source).get
 }

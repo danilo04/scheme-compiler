@@ -15,6 +15,7 @@ package edu.iastate.cs.pal
 object walkeme {
 
   def main(args: Array[String]) = {
-
+    println("walkeme compiler")
+    Interpreter.eval("(begin (define r 10) (* pi (* r r)))", Env.empty)
   }
 }
