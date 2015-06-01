@@ -31,7 +31,7 @@ class Parser extends JavaTokenParsers {
   def iftest = "(" ~> "if" ~> expr ~ expr ~ expr <~ ")" ^^ { case t ~ c ~ a => AST.IfTest(t, c, a) }
   def proc = "(" ~> varr ~ rep(expr) <~ ")" ^^ { case v ~ as => AST.Proc(v, as) }
 
-  def expr: Parser[AST.Expr] = varr | number | quote | define | iftest | proc
+  def expr: Parser[AST.Expr] = varr | number | quote | define | lambda | iftest | proc
 
   def parse(source: String): AST.Expr = parseAll(expr, source).get
 }
