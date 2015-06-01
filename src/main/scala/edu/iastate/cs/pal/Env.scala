@@ -1,8 +1,5 @@
 package edu.iastate.cs.pal
 
-import edu.iastate.cs.pal.AST
-
-
 /**
  * Danilo Dominguez Perez
  *
@@ -13,15 +10,17 @@ import edu.iastate.cs.pal.AST
  */
 
 sealed abstract class Value
-case class ValueConst(const: Number) extends Value
+case class ValueInt(const: Int) extends Value
+case class ValueFloat(const: Float) extends Value
 case class ValueClosure(env: Env, varr: AST.Var, expr: AST.Expr) extends Value
-case class ValueSymbol(value: String) extends Value
+case class ValueAtom(value: String) extends Value
+case class ValueEmpty() extends Value
 
-class Env(env: Map[AST.Var, Value]) {
-  def update(varr: AST.Var, value: Value) = new Env(env + (varr -> value))
-  def lookup(varr: AST.Var) = env(varr)
+class Env(env: Map[String, Value]) {
+  def update(varr: String, value: Value) = new Env(env + (varr -> value))
+  def lookup(varr: String) = env.get(varr)
 }
 
 object Env {
-  def empty = new Env(Map[AST.Var, Value]())
+  def empty = new Env(Map[String, Value]())
 }
