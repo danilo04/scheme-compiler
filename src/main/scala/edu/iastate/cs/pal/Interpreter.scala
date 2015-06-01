@@ -23,7 +23,7 @@ object Interpreter {
     case AST.IntNumber(number) => (env, new ValueInt(number))
     case AST.FloatNumber(number) => (env, new ValueFloat(number))
     case AST.Var(name) =>
-      val value = env.lookup(name).getOrElse(new ValueInt(0)) // TODO: here produce error
+      val value = env.lookup(name).getOrElse(new ValueError("Variable with name " + name + " does not exists."))
       (env, value)
     case AST.Quote(expr) => (env, new ValueAtom(expr.toString))
     case AST.IfTest(test, conseq, alt) =>
@@ -39,7 +39,18 @@ object Interpreter {
       else evalExpr(alt, newEnv)
     case AST.Define(varName, expr) =>
       val (newEnv, exprValue) = evalExpr(expr, env)
-      (newEnv.update(varName.name, exprValue), new ValueEmpty)
-    case AST.Proc(name, args) => (env, new ValueEmpty)
+      (newEnv.update(varName.name, exprValue), exprValue)
+    case AST.Proc(name, args) =>
+      val value = env.lookup(name.name).getOrElse(new ValueError("Procedure with name " + name + " does not exists."))
+      value match {
+        case ValueError => (env, value)
+        case ValueLambda(envClosure, varr, expr) =>
+          val valueArgs = args.map((arg) => evalExpr(arg, env))
+          // TODO: bind valueArgs (actual parameters) to formal parameters
+          // TODO: then execute the lambda
+          (env, value)
+        case _ => (env, new ValueError("Value of variable " + name + " is not a procedure"))
+      }
+
   }
 }

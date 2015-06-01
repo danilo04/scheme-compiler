@@ -27,6 +27,7 @@ class Parser extends JavaTokenParsers {
   def number = int | float
   def quote = "(" ~> "quote" ~> expr <~ ")" ^^ { case e => AST.Quote(e) }
   def define = "(" ~> "define" ~> varr ~ expr <~ ")" ^^ { case v ~ e => AST.Define(v, e) }
+  def lambda = "(" ~> "lambda" ~> rep1(varr) ~ expr <~ ")" ^^ { case vs ~ e => AST.Lambda(vs, e) }
   def iftest = "(" ~> "if" ~> expr ~ expr ~ expr <~ ")" ^^ { case t ~ c ~ a => AST.IfTest(t, c, a) }
   def proc = "(" ~> varr ~ rep(expr) <~ ")" ^^ { case v ~ as => AST.Proc(v, as) }
 
