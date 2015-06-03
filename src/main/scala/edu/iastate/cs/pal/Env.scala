@@ -16,7 +16,7 @@ case class ValueInt(const: Int) extends Value {
 case class ValueFloat(const: Float) extends Value {
   override def toString() = const.toString
 }
-case class ValueLambda(env: Env, varr: AST.Var, expr: AST.Expr) extends Value {
+case class ValueClosure(env: Env, params: List[AST.Var], expr: AST.Expr) extends Value {
   override def toString() = "<Lambda>"
 }
 case class ValueAtom(value: String) extends Value {
@@ -26,7 +26,7 @@ case class ValueError(errorMsg: String) extends Value {
   override def toString() = "Error: " + errorMsg
 }
 
-class Env(env: Map[String, Value]) {
+class Env(val env: Map[String, Value]) {
   def update(varr: String, value: Value) = new Env(env + (varr -> value))
   def lookup(varr: String) = env.get(varr)
   def extend(newEnv: Env): Env = new Env(env ++ newEnv.env)

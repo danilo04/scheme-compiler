@@ -35,7 +35,7 @@ object AST {
   case class Lambda(args: List[Var], body: Expr) extends Expr {
     override def toString() = "(lambda " + args.toString + " " + body.toString + ")"
   }
-  case class Proc(name: Var, args: List[Expr]) extends Expr {
-    override def toString() = "(" + name.toString() + " " + args.toString + ")"
+  case class Proc(app: Expr, args: List[Expr]) extends Expr {
+    override def toString() = "(" + app.toString() + " " + args.toString + ")"
   }
 }

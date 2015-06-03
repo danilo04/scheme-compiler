@@ -1,5 +1,9 @@
 package edu.iastate.cs.pal
 
+import scala.collection
+import scala.collection.mutable.ListBuffer
+import scala.collection.parallel.mutable
+
 /**
  * Danilo Dominguez Perez
  *
@@ -40,17 +44,34 @@ object Interpreter {
     case AST.Define(varName, expr) =>
       val (newEnv, exprValue) = evalExpr(expr, env)
       (newEnv.update(varName.name, exprValue), exprValue)
-    case AST.Proc(name, args) =>
-      val value = env.lookup(name.name).getOrElse(new ValueError("Procedure with name " + name + " does not exists."))
-      value match {
-        case ValueError => (env, value)
-        case ValueLambda(envClosure, varr, expr) =>
-          val valueArgs = args.map((arg) => evalExpr(arg, env))
-          // TODO: bind valueArgs (actual parameters) to formal parameters
-          // TODO: then execute the lambda
-          (env, value)
-        case _ => (env, new ValueError("Value of variable " + name + " is not a procedure"))
+    case AST.Proc(app, args) =>
+      val (envApp, valueApp) = evalExpr(app, env)
+      valueApp match {
+        case ValueClosure(env, params, expr) =>
+          if (params.size != args.size) {
+            (env, new ValueError("Different number of parameters passed for lambda "))
+          } else  {
+            val (valuesArgs, envArgs) = evalArgs(args, envApp)
+            // The values are bound to the variables
+            val newEnv = bindVars(params, valuesArgs, envArgs)
+            evalExpr(expr, newEnv)
+          }
+        case _ => (env, new ValueError("Value " + valueApp + " is not a function."))
       }
+    case AST.Lambda(args, body) => (env, new ValueClosure(env, args, body))
+  }
 
+  private def bindVars(vars : List[AST.Var], values: List[Value], env: Env): Env = (vars, values) match {
+    case ((varr) :: (restVars), (value) :: (restValues)) =>
+      val newEnv = env.update(varr.name, value)
+      bindVars(restVars, restValues, newEnv)
+  }
+
+  private def evalArgs(args: List[AST.Expr], env: Env): (List[Value], Env) = args match {
+    case (arg: AST.Expr) :: (rest: List[AST.Expr]) =>
+      val (envArg, valueArg) = evalExpr(arg, env)
+      val (valuesArgs, envFinal) = evalArgs(rest, envArg)
+      (valueArg :: valuesArgs, envFinal)
+    case _ => (Nil, env)
   }
 }
