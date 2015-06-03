@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="73ea1c26-ffba-4f6d-a012-3cde24a634b0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/edu/iastate/cs/pal/AST.scala" afterPath="$PROJECT_DIR$/src/main/scala/edu/iastate/cs/pal/AST.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/edu/iastate/cs/pal/Env.scala" afterPath="$PROJECT_DIR$/src/main/scala/edu/iastate/cs/pal/Env.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/edu/iastate/cs/pal/Interpreter.scala" afterPath="$PROJECT_DIR$/src/main/scala/edu/iastate/cs/pal/Interpreter.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/edu/iastate/cs/pal/Parser.scala" afterPath="$PROJECT_DIR$/src/main/scala/edu/iastate/cs/pal/Parser.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/edu/iastate/cs/pal/walkeme.scala" afterPath="$PROJECT_DIR$/src/main/scala/edu/iastate/cs/pal/walkeme.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="scheme-compiler.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -43,10 +38,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="walkeme.scala" pinned="false" current-in-tab="true">
+      <file leaf-file-name="walkeme.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/edu/iastate/cs/pal/walkeme.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.472103">
+            <state vertical-scroll-proportion="0.0">
               <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding />
             </state>
@@ -63,11 +58,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Interpreter.scala" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Interpreter.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala/edu/iastate/cs/pal/Interpreter.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+            <state vertical-scroll-proportion="1.3390558">
+              <caret line="79" column="3" selection-start-line="79" selection-start-column="3" selection-end-line="79" selection-end-column="3" />
               <folding>
                 <element signature="e#28#51#0" expanded="true" />
               </folding>
@@ -112,8 +107,8 @@
         <option value="$PROJECT_DIR$/src/main/scala/edu/iastate/cs/pal/AST.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/edu/iastate/cs/pal/Parser.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/edu/iastate/cs/pal/Env.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/edu/iastate/cs/pal/Interpreter.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/edu/iastate/cs/pal/walkeme.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/edu/iastate/cs/pal/Interpreter.scala" />
       </list>
     </option>
   </component>
@@ -664,16 +659,16 @@
       <workItem from="1433059146128" duration="1153000" />
       <workItem from="1433104668483" duration="2338000" />
       <workItem from="1433186677980" duration="2435000" />
-      <workItem from="1433281017528" duration="6625000" />
+      <workItem from="1433281017528" duration="6947000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21305000" />
+    <option name="totallyTimeSpent" value="21627000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="29" width="1600" height="1171" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -693,7 +688,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.306875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32963988" sideWeight="0.4975" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32963988" sideWeight="0.4975" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -985,21 +980,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/edu/iastate/cs/pal/Interpreter.scala">
+    <entry file="file://$PROJECT_DIR$/src/main/scala/edu/iastate/cs/pal/walkeme.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding>
-            <element signature="e#28#51#0" expanded="true" />
-          </folding>
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/edu/iastate/cs/pal/walkeme.scala">
+    <entry file="file://$PROJECT_DIR$/src/main/scala/edu/iastate/cs/pal/Interpreter.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.472103">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="1.3390558">
+          <caret line="79" column="3" selection-start-line="79" selection-start-column="3" selection-end-line="79" selection-end-column="3" />
+          <folding>
+            <element signature="e#28#51#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

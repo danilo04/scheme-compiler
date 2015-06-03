@@ -49,26 +49,30 @@ object Interpreter {
       valueApp match {
         case ValueClosure(env, params, expr) =>
           if (params.size != args.size) {
-            (env, new ValueError("Different number of parameters passed for lambda "))
+            (env, new ValueError("Different number of parameters passed for lambda"))
           } else  {
             val (valuesArgs, envArgs) = evalArgs(args, envApp)
             // The values are bound to the variables
             val newEnv = bindVars(params, valuesArgs, envArgs)
-            evalExpr(expr, newEnv)
+            newEnv match {
+              case None => (env, ValueError("Error binding parameters"))
+              case _ => evalExpr(expr, newEnv.get)
+            }
           }
         case _ => (env, new ValueError("Value " + valueApp + " is not a function."))
       }
     case AST.Lambda(args, body) => (env, new ValueClosure(env, args, body))
   }
 
-  private def bindVars(vars : List[AST.Var], values: List[Value], env: Env): Env = (vars, values) match {
+  private def bindVars(vars : List[AST.Var], values: List[Value], env: Env): Option[Env] = (vars, values) match {
     case ((varr) :: (restVars), (value) :: (restValues)) =>
       val newEnv = env.update(varr.name, value)
       bindVars(restVars, restValues, newEnv)
+    case _ => None
   }
 
   private def evalArgs(args: List[AST.Expr], env: Env): (List[Value], Env) = args match {
-    case (arg: AST.Expr) :: (rest: List[AST.Expr]) =>
+    case (arg) :: (rest) =>
       val (envArg, valueArg) = evalExpr(arg, env)
       val (valuesArgs, envFinal) = evalArgs(rest, envArg)
       (valueArg :: valuesArgs, envFinal)
