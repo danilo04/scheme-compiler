@@ -47,21 +47,23 @@ object Interpreter {
     case AST.Proc(app, args) =>
       val (envApp, valueApp) = evalExpr(app, env)
       valueApp match {
-        case ValueClosure(env, params, expr) =>
-          if (params.size != args.size) {
-            (env, new ValueError("Different number of parameters passed for lambda"))
-          } else  {
-            val (valuesArgs, envArgs) = evalArgs(args, envApp)
-            // The values are bound to the variables
-            val newEnv = bindVars(params, valuesArgs, envArgs)
-            newEnv match {
-              case None => (env, ValueError("Error binding parameters"))
-              case _ => evalExpr(expr, newEnv.get)
-            }
+        case ValueClosure(env, f) =>
+          // evaluate the arguments
+          val (valuesArgs, envArgs) = evalArgs(args, envApp)
+          f(envArgs, valuesArgs) match {
+            case Some(result) => result
+            case _ => (env, new ValueError("There was an error executing procedure <" + app.toString + ">"))
           }
         case _ => (env, new ValueError("Value " + valueApp + " is not a function."))
       }
-    case AST.Lambda(args, body) => (env, new ValueClosure(env, args, body))
+    case AST.Lambda(args, body) =>
+      val f: (Env, List[Value]) => Option[(Env, Value)] = (envExec, params) => {
+        bindVars(args, params, env) match {
+          case Some(envBinding) => Some(evalExpr(body, envExec.extend(envBinding)))
+          case _ => None
+        }
+      }
+      (env, new ValueClosure(env, f))
   }
 
   private def bindVars(vars : List[AST.Var], values: List[Value], env: Env): Option[Env] = (vars, values) match {

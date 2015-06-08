@@ -4,7 +4,7 @@
 		module="scheme-compiler$sources_2.11"
 		revision="1.0"
 		status="integration"
-		publication="20150531212600"
+		publication="20150608012341"
 	/>
 	<configurations>
 		<conf name="default" visibility="public" description=""/>
