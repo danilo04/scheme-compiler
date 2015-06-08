@@ -16,6 +16,7 @@ object walkeme {
 
   def main(args: Array[String]) = {
     println("walkeme compiler")
-    Interpreter.eval("(begin (define r 10) (* pi (* r r)))", Env.empty)
+    // TODO: create global environment with +, - functions
+    Interpreter.eval("(define r 10) (* pi (* r r)))", Env.empty)
   }
 }
