@@ -22,5 +22,6 @@ class Env(env: Map[String, Value]) {
 }
 
 object Env {
-  def empty = new Env(Map[String, Value]())
+  val EMPTY_ENV = new Env(Map[String, Value]())
+  def empty = EMPTY_ENV
 }
